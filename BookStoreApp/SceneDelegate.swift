@@ -17,8 +17,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(windowScene: windowScene)
 		
-		window?.rootViewController = ViewController()
+		let viewController = ViewController()
+		viewController.bookStoreManager = buildBookStoreManager()
+		
+		window?.rootViewController = viewController
 		window?.makeKeyAndVisible()
 	}
 }
 
+extension SceneDelegate {
+	func buildBookStoreManager() -> IBookStoreDataManager {
+		let bookTypeManager: IBookTypeManager = BookTypeManager()
+		let bookStoreManager = BookStoreDataManager()
+		bookStoreManager.addBookTypes(bookTypeManager.getBookTypes())
+		
+		return bookStoreManager
+	}
+}
