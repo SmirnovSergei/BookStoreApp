@@ -105,7 +105,7 @@ private extension ViewController {
 			alignment: .top)
 		
 		let section = NSCollectionLayoutSection(group: group)
-		section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 80, trailing: 0)
+		section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 50, trailing: 0)
 		section.orthogonalScrollingBehavior = .continuous
 		section.boundarySupplementaryItems = [header]
 		

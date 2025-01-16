@@ -42,7 +42,7 @@ private extension CustomCollectionViewCell {
 	func setupLabel() {
 		bookTitle.font = .systemFont(ofSize: 15, weight: .semibold)
 		bookTitle.textColor = .white
-		bookTitle.numberOfLines = 2
+		bookTitle.numberOfLines = 4
 		bookTitle.textAlignment = .left
 	}
 	

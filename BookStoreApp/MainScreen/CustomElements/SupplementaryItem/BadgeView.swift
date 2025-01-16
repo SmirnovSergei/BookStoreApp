@@ -8,6 +8,7 @@
 import UIKit
 
 class BadgeView: UICollectionReusableView {
+	
 	static let reuseIdentifier = "BadgeView"
 	private let badgeLabel = UILabel()
 	
