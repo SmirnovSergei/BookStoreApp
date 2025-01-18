@@ -25,8 +25,6 @@ class ViewController: UIViewController {
 		setupView()
 		configureCollectionView()
 	}
-	
-	
 }
 
 //MARK: - Setup View
@@ -111,7 +109,7 @@ private extension ViewController {
 		
 		return UICollectionViewCompositionalLayout(section: section)
 	}
-	
+		
 	func configureCollectionView() {
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		
@@ -162,11 +160,9 @@ extension ViewController: UICollectionViewDataSource {
 				withReuseIdentifier: BadgeView.reuseIdentifier,
 				for: indexPath
 			) as! BadgeView
-			if library[indexPath.section].books[indexPath.row].isNew {
-				badge.configureBadge(text: "Новинка")
-			} else {
-				badge.isHidden = true
-			}
+			badge.configureBadge(text: "Новинка")
+			badge.isHidden = library[indexPath.section].books[indexPath.row].isNew == false
+			
 			return badge
 		}
 		return UICollectionReusableView()

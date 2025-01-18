@@ -8,6 +8,7 @@
 import UIKit
 
 class SectionHeaderView: UICollectionReusableView {
+	
 	static let reuseIdentifier = "SectionHeaderView"
 	private let label = UILabel()
 	
