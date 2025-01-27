@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum Scene {
+	case viewController
+	case sectionProvider
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
@@ -20,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		let viewController = ViewController()
 		viewController.bookStoreManager = buildBookStoreManager()
 		
-		window?.rootViewController = viewController
+		window?.rootViewController = assembly(scene: .sectionProvider)
 		window?.makeKeyAndVisible()
 	}
 }
@@ -32,5 +37,14 @@ extension SceneDelegate {
 		bookStoreManager.addBookTypes(bookTypeManager.getBookTypes())
 		
 		return bookStoreManager
+	}
+	
+	func assembly(scene: Scene) -> UIViewController {
+		switch scene {
+		case .viewController:
+			return ViewController()
+		case .sectionProvider:
+			return MultipleSectionsViewController()
+		}
 	}
 }
