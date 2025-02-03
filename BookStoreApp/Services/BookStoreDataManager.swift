@@ -10,7 +10,6 @@ import Foundation
 protocol IBookStoreDataManager {
 	func addBookTypes(_ bookTypes: [BookType])
 	func getBookTypes() -> [BookType]
-//	func getBooksInBookType(_ bookType: String) -> [Book]
 }
 
 class BookStoreDataManager: IBookStoreDataManager {
@@ -23,8 +22,4 @@ class BookStoreDataManager: IBookStoreDataManager {
 	func getBookTypes() -> [BookType] {
 		bookTypes
 	}
-	
-//	func getBooksInBookType(_ bookType: String) -> [Book] {
-//
-//	}
 }

@@ -17,3 +17,6 @@ struct Book {
 	let title: String
 	var isNew = false
 }
+
+extension BookType: Hashable, Equatable {}
+extension Book: Hashable, Equatable {}

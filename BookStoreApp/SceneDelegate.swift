@@ -21,11 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(windowScene: windowScene)
-		
-		let viewController = ViewController()
-		viewController.bookStoreManager = buildBookStoreManager()
-		
-		window?.rootViewController = assembly(scene: .sectionProvider)
+		window?.rootViewController = assembly(scene: .viewController)
 		window?.makeKeyAndVisible()
 	}
 }
@@ -42,7 +38,9 @@ extension SceneDelegate {
 	func assembly(scene: Scene) -> UIViewController {
 		switch scene {
 		case .viewController:
-			return ViewController()
+			let viewController = ViewController()
+			viewController.bookStoreManager = buildBookStoreManager()
+			return viewController
 		case .sectionProvider:
 			return MultipleSectionsViewController()
 		}
