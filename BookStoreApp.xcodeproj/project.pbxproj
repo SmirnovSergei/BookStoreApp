@@ -147,8 +147,8 @@
 				05D9A2B62D33F30600BF17B4 /* SceneDelegate.swift */,
 				05D9A2C32D33F3BF00BF17B4 /* MainScreen */,
 				05D9A2AE2D33F30600BF17B4 /* Services */,
-				05D9A2AF2D33F30600BF17B4 /* Resourses */,
 				05D9A2C22D33F39700BF17B4 /* Models */,
+				05D9A2AF2D33F30600BF17B4 /* Resourses */,
 			);
 			path = BookStoreApp;
 			sourceTree = "<group>";

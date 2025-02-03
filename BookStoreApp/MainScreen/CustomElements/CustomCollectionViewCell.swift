@@ -69,7 +69,6 @@ private extension CustomCollectionViewCell {
 			bookTitle.topAnchor.constraint(equalTo: bookImage.bottomAnchor, constant: 15),
 			bookTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 			bookTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-			//			bookTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 		])
 	}
 }
