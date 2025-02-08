@@ -12,6 +12,7 @@
 		0547BAFB2D385B10001ADD86 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0547BAFA2D385B00001ADD86 /* BadgeView.swift */; };
 		056C707D2D481C64003E3F47 /* MultipleSectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056C707C2D481C51003E3F47 /* MultipleSectionsViewController.swift */; };
 		056C707F2D482309003E3F47 /* MultipleSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056C707E2D4822F4003E3F47 /* MultipleSectionHeaderView.swift */; };
+		059899342D57546B00B1CD34 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059899332D57543500B1CD34 /* DetailViewController.swift */; };
 		05D9A2B92D33F30600BF17B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A2B12D33F30600BF17B4 /* Assets.xcassets */; };
 		05D9A2BB2D33F30600BF17B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A2B52D33F30600BF17B4 /* LaunchScreen.storyboard */; };
 		05D9A2BC2D33F30600BF17B4 /* BookStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A2AC2D33F30600BF17B4 /* BookStoreDataManager.swift */; };
@@ -45,6 +46,7 @@
 		0547BAFA2D385B00001ADD86 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		056C707C2D481C51003E3F47 /* MultipleSectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSectionsViewController.swift; sourceTree = "<group>"; };
 		056C707E2D4822F4003E3F47 /* MultipleSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSectionHeaderView.swift; sourceTree = "<group>"; };
+		059899332D57543500B1CD34 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		05D9A2582D33E7CF00BF17B4 /* BookStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9A26E2D33E7D000BF17B4 /* BookStoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStoreAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9A2782D33E7D000BF17B4 /* BookStoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				05D9A2B72D33F30600BF17B4 /* ViewController.swift */,
+				059899332D57543500B1CD34 /* DetailViewController.swift */,
 				056C707C2D481C51003E3F47 /* MultipleSectionsViewController.swift */,
 				05469ED62D3850BC00E8E9C1 /* CustomElements */,
 			);
@@ -311,6 +314,7 @@
 				056C707D2D481C64003E3F47 /* MultipleSectionsViewController.swift in Sources */,
 				05D9A2BC2D33F30600BF17B4 /* BookStoreDataManager.swift in Sources */,
 				0534D6462D370818000F15C3 /* CustomCollectionViewCell.swift in Sources */,
+				059899342D57546B00B1CD34 /* DetailViewController.swift in Sources */,
 				05D9A2BD2D33F30600BF17B4 /* BookTypeManager.swift in Sources */,
 				05469ED92D3850F700E8E9C1 /* SectionHeaderView.swift in Sources */,
 				05D9A2BE2D33F30600BF17B4 /* AppDelegate.swift in Sources */,

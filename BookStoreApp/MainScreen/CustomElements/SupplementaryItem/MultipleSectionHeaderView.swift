@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MultipleSectionHeaderView: UICollectionReusableView {
+final class MultipleSectionHeaderView: UICollectionReusableView {
 	
 	static let reuseIdentifier = "SectionHeaderView"
 	private let label = UILabel()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell {
+final class CustomCollectionViewCell: UICollectionViewCell {
 	
 	private let bookImage = UIImageView()
 	private let bookTitle = UILabel()

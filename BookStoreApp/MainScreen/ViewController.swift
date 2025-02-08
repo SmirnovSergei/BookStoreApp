@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 	
 	struct ElementKind {
 		static let badge = "badge-element-kind"
@@ -28,6 +28,11 @@ class ViewController: UIViewController {
 		library = bookStoreManager.getBookTypes()
 		configureDataSource()
 		applyInitialData()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.navigationBar.prefersLargeTitles = true
 	}
 }
 
@@ -51,9 +56,32 @@ private extension ViewController {
 			withReuseIdentifier: BadgeView.reuseIdentifier
 		)
 		
-		collectionView.backgroundColor = .systemFill
+		setupNavigationBar()
 		
+		collectionView.backgroundColor = .systemFill
+		collectionView.delegate = self
 		view.addSubview(collectionView)
+	}
+	
+	func setupNavigationBar() {
+		navigationItem.title = "Книги для души"
+		navigationController?.navigationBar.tintColor = .white
+		navigationController?.navigationBar.prefersLargeTitles = true
+		
+		let appearance = UINavigationBarAppearance()
+		appearance.configureWithOpaqueBackground()
+		appearance.backgroundColor = .systemFill
+		
+		appearance.titleTextAttributes = [
+			.foregroundColor: UIColor.white
+		]
+		
+		appearance.largeTitleTextAttributes = [
+			.foregroundColor: UIColor.white
+		]
+		
+		navigationController?.navigationBar.standardAppearance = appearance
+		navigationController?.navigationBar.scrollEdgeAppearance = appearance
 	}
 }
 
@@ -174,5 +202,14 @@ extension ViewController {
 		}
 		
 		diffableDataSource.apply(snapshot, animatingDifferences: false)
+	}
+}
+
+//MARK: - CollectionViewDelegate
+extension ViewController: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let detailVC = DetailViewController()
+		detailVC.book = library[indexPath.section].books[indexPath.row]
+		navigationController?.pushViewController(detailVC, animated: true)
 	}
 }
