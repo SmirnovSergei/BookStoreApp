@@ -30,10 +30,19 @@ private extension MultipleSectionsViewController {
 			withReuseIdentifier: MultipleSectionHeaderView.reuseIdentifier
 		)
 		
-		collectionView.backgroundColor = .white
+		collectionView.backgroundColor = .black
 		collectionView.dataSource = self
 		
+		view.backgroundColor = .black
 		view.addSubview(collectionView)
+		
+		setupNavigationBar()
+	}
+	
+	func setupNavigationBar() {
+		navigationItem.title = "Поиск"
+		navigationController?.navigationBar.prefersLargeTitles = false
+
 	}
 }
 

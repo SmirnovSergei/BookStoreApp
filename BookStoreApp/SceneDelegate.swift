@@ -8,6 +8,7 @@
 import UIKit
 
 enum Scene {
+	case tabBarController
 	case viewController
 	case sectionProvider
 }
@@ -21,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(windowScene: windowScene)
-		window?.rootViewController = UINavigationController(rootViewController: assembly(scene: .viewController))
+		window?.rootViewController = UINavigationController(rootViewController: assembly(scene: .tabBarController))
 		window?.makeKeyAndVisible()
 	}
 }
@@ -37,6 +38,8 @@ extension SceneDelegate {
 	
 	func assembly(scene: Scene) -> UIViewController {
 		switch scene {
+		case .tabBarController:
+			return TabBarController()
 		case .viewController:
 			let viewController = ViewController()
 			viewController.bookStoreManager = buildBookStoreManager()

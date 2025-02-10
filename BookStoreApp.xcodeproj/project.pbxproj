@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050213302D5A91820008BD3F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0502132F2D5A91750008BD3F /* TabBarController.swift */; };
 		0534D6462D370818000F15C3 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534D6452D37080F000F15C3 /* CustomCollectionViewCell.swift */; };
 		05469ED92D3850F700E8E9C1 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05469ED82D3850E800E8E9C1 /* SectionHeaderView.swift */; };
 		0547BAFB2D385B10001ADD86 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0547BAFA2D385B00001ADD86 /* BadgeView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0502132F2D5A91750008BD3F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0534D6452D37080F000F15C3 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		05469ED82D3850E800E8E9C1 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		0547BAFA2D385B00001ADD86 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				05D9A2B72D33F30600BF17B4 /* ViewController.swift */,
+				0502132F2D5A91750008BD3F /* TabBarController.swift */,
 				059899332D57543500B1CD34 /* DetailViewController.swift */,
 				056C707C2D481C51003E3F47 /* MultipleSectionsViewController.swift */,
 				05469ED62D3850BC00E8E9C1 /* CustomElements */,
@@ -312,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				056C707D2D481C64003E3F47 /* MultipleSectionsViewController.swift in Sources */,
+				050213302D5A91820008BD3F /* TabBarController.swift in Sources */,
 				05D9A2BC2D33F30600BF17B4 /* BookStoreDataManager.swift in Sources */,
 				0534D6462D370818000F15C3 /* CustomCollectionViewCell.swift in Sources */,
 				059899342D57546B00B1CD34 /* DetailViewController.swift in Sources */,
