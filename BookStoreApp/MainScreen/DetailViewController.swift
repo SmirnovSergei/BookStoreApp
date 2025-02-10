@@ -12,9 +12,20 @@ final class DetailViewController: UIViewController {
 	var bookStoreManager: IBookStoreDataManager!
 	
 	var book: Book?
+	
 	private let bookImage = UIImageView()
 	private let bookNameLabel = UILabel()
 	private var toggleHeart = false
+	
+	init(bookID: Int, manager: IBookStoreDataManager) {
+		super.init(nibName: nil, bundle: nil)
+		bookStoreManager = manager
+		book = bookStoreManager.getBookWithID(bookID)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,7 +34,7 @@ final class DetailViewController: UIViewController {
 	}
 	
 	@objc
-	private func favouriteButtonTapped() {
+	private func favoriteButtonTapped() {
 		toggleHeart.toggle()
 		setupNavigationBar()
 	}
@@ -33,7 +44,7 @@ final class DetailViewController: UIViewController {
 private extension DetailViewController {
 	
 	func setupView() {
-		view.backgroundColor = .systemFill
+		view.backgroundColor = .black
 		
 		setupBookImage()
 		setupBookNameLabel()
@@ -72,7 +83,7 @@ private extension DetailViewController {
 			image: heartImage,
 			style: .plain,
 			target: self,
-			action: #selector(favouriteButtonTapped)
+			action: #selector(favoriteButtonTapped)
 		)
 		
 		navigationItem.rightBarButtonItem = favouriteButton

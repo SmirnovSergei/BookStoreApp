@@ -58,7 +58,7 @@ private extension ViewController {
 		
 		setupNavigationBar()
 		
-		collectionView.backgroundColor = .systemFill
+		collectionView.backgroundColor = .black
 		collectionView.delegate = self
 		view.addSubview(collectionView)
 	}
@@ -70,7 +70,7 @@ private extension ViewController {
 		
 		let appearance = UINavigationBarAppearance()
 		appearance.configureWithOpaqueBackground()
-		appearance.backgroundColor = .systemFill
+		appearance.backgroundColor = .black
 		
 		appearance.titleTextAttributes = [
 			.foregroundColor: UIColor.white
@@ -208,8 +208,7 @@ extension ViewController {
 //MARK: - CollectionViewDelegate
 extension ViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let detailVC = DetailViewController()
-		detailVC.book = library[indexPath.section].books[indexPath.row]
+		let detailVC = DetailViewController(bookID: library[indexPath.section].books[indexPath.row].id, manager: bookStoreManager)
 		navigationController?.pushViewController(detailVC, animated: true)
 	}
 }

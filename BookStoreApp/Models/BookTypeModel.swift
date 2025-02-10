@@ -15,6 +15,7 @@ struct BookType {
 struct Book {
 	let image: String
 	let title: String
+	let id: Int
 	var isNew = false
 }
 

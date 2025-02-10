@@ -10,6 +10,7 @@ import Foundation
 protocol IBookStoreDataManager {
 	func addBookTypes(_ bookTypes: [BookType])
 	func getBookTypes() -> [BookType]
+	func getBookWithID(_ id: Int) -> Book?
 }
 
 class BookStoreDataManager: IBookStoreDataManager {
@@ -21,5 +22,18 @@ class BookStoreDataManager: IBookStoreDataManager {
 	
 	func getBookTypes() -> [BookType] {
 		bookTypes
+	}
+	
+	func getBookWithID(_ id: Int) -> Book? {
+		var foundedBook: Book!
+		
+		for bookType in bookTypes {
+			for book in bookType.books {
+				if book.id == id {
+					foundedBook = book
+				}
+			}
+		}
+		return foundedBook
 	}
 }
