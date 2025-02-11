@@ -9,24 +9,12 @@ import UIKit
 
 final class DetailViewController: UIViewController {
 	
-	var bookStoreManager: IBookStoreDataManager!
-	
 	var book: Book?
 	
 	private let bookImage = UIImageView()
 	private let bookNameLabel = UILabel()
 	private var toggleHeart = false
-	
-	init(bookID: Int, manager: IBookStoreDataManager) {
-		super.init(nibName: nil, bundle: nil)
-		bookStoreManager = manager
-		book = bookStoreManager.getBookWithID(bookID)
-	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupView()

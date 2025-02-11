@@ -208,7 +208,8 @@ extension ViewController {
 //MARK: - CollectionViewDelegate
 extension ViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let detailVC = DetailViewController(bookID: library[indexPath.section].books[indexPath.row].id, manager: bookStoreManager)
+		let detailVC = DetailViewController()
+		detailVC.book = library[indexPath.section].books[indexPath.row]
 		navigationController?.pushViewController(detailVC, animated: true)
 	}
 }
