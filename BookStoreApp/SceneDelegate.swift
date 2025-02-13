@@ -7,45 +7,46 @@
 
 import UIKit
 
-enum Scene {
-	case tabBarController
-	case viewController
-	case sectionProvider
-}
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
 
-
+	private let allTabBarItems = TabBarItem.allTabBarItems
+	
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(windowScene: windowScene)
-		window?.rootViewController = UINavigationController(rootViewController: assembly(scene: .tabBarController))
+		
+		let tabBarController = TabBarController()
+		
+		tabBarController.viewControllers?.enumerated().forEach { index, vc in
+			guard let navVC = vc as? UINavigationController else { return }
+			pushViewController(index: index, controller: navVC)
+		}
+		
+		window?.rootViewController = UINavigationController(rootViewController: tabBarController)
 		window?.makeKeyAndVisible()
 	}
 }
 
 extension SceneDelegate {
-	func buildBookStoreManager() -> IBookStoreDataManager {
-		let bookTypeManager: IBookTypeManager = BookTypeManager()
-		let bookStoreManager = BookStoreDataManager()
-		bookStoreManager.addBookTypes(bookTypeManager.getBookTypes())
+	func pushViewController(index: Int, controller: UINavigationController) {
+		let bookStoreManager: IBookStoreDataManager = BookStoreDataManager()
 		
-		return bookStoreManager
-	}
-	
-	func assembly(scene: Scene) -> UIViewController {
-		switch scene {
-		case .tabBarController:
-			return TabBarController()
-		case .viewController:
-			let viewController = ViewController()
-			viewController.bookStoreManager = buildBookStoreManager()
-			return viewController
-		case .sectionProvider:
-			return MultipleSectionsViewController()
+		if bookStoreManager.isEmpty() {
+			let bookStoreRepository = BookTypeManager()
+			let bookTypes = bookStoreRepository.getBookTypes()
+			bookStoreManager.addBookTypes(bookTypes)
+		}
+		
+		switch allTabBarItems[index] {
+		case .home:
+			let homeVC = ViewController(manager: bookStoreManager)
+			controller.pushViewController(homeVC, animated: false)
+		case .search:
+			let searchVC = MultipleSectionsViewController()
+			controller.pushViewController(searchVC, animated: false)
 		}
 	}
 }

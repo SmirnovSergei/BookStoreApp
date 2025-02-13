@@ -9,12 +9,25 @@ import UIKit
 
 final class DetailViewController: UIViewController {
 	
-	var book: Book?
+	var bookStoreManager: IBookStoreDataManager!
+	
+	var bookID: Int
 	
 	private let bookImage = UIImageView()
 	private let bookNameLabel = UILabel()
 	private var toggleHeart = false
 
+	init(bookStoreManager: IBookStoreDataManager, bookID: Int) {
+		self.bookID = bookID
+		super.init(nibName: nil, bundle: nil)
+		self.bookStoreManager = bookStoreManager
+
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupView()
@@ -30,12 +43,11 @@ final class DetailViewController: UIViewController {
 
 //MARK: - Setup View
 private extension DetailViewController {
-	
 	func setupView() {
 		view.backgroundColor = .black
-		
-		setupBookImage()
-		setupBookNameLabel()
+		guard let book = bookStoreManager.getBookWithID(bookID) else { return }
+		setupBookImage(book: book)
+		setupBookNameLabel(book: book)
 		
 		[bookImage, bookNameLabel].forEach { subview in
 			view.addSubview(subview)
@@ -44,15 +56,16 @@ private extension DetailViewController {
 		setupNavigationBar()
 	}
 	
-	func setupBookImage() {
-		bookImage.image = UIImage(named: book?.image ?? "")
+	func setupBookImage(book: Book) {
+		bookImage.image = UIImage(named: book.image)
+		
 		bookImage.widthAnchor.constraint(equalToConstant: 200).isActive = true
 		bookImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
 		bookImage.contentMode = .scaleAspectFill
 	}
 	
-	func setupBookNameLabel() {
-		bookNameLabel.text = book?.title
+	func setupBookNameLabel(book: Book) {
+		bookNameLabel.text = book.title
 		bookNameLabel.textColor = .white
 		bookNameLabel.numberOfLines = 2
 		bookNameLabel.textAlignment = .center
@@ -77,6 +90,7 @@ private extension DetailViewController {
 		navigationItem.rightBarButtonItem = favouriteButton
 		
 		navigationItem.title = "Book"
+		
 		navigationController?.navigationBar.prefersLargeTitles = false
 	}
 }

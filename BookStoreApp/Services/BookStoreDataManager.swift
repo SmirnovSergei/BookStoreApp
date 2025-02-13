@@ -9,6 +9,8 @@ import Foundation
 
 protocol IBookStoreDataManager {
 	func addBookTypes(_ bookTypes: [BookType])
+	func isEmpty() -> Bool
+	func getCount() -> Int
 	func getBookTypes() -> [BookType]
 	func getBookWithID(_ id: Int) -> Book?
 }
@@ -18,6 +20,14 @@ class BookStoreDataManager: IBookStoreDataManager {
 	
 	func addBookTypes(_ bookTypes: [BookType]) {
 		self.bookTypes.append(contentsOf: bookTypes)
+	}
+	
+	func isEmpty() -> Bool {
+		bookTypes.isEmpty
+	}
+	
+	func getCount() -> Int {
+		bookTypes.count
 	}
 	
 	func getBookTypes() -> [BookType] {
