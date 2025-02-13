@@ -13,48 +13,31 @@ enum TabBarItem {
 	
 	var title: String {
 		switch self {
-		case .home:
-			return "Home"
-		case .search:
-			return "Search"
+		case .home: return "Home"
+		case .search: return "Search"
 		}
 	}
 	
 	var icon: UIImage? {
 		switch self {
-		case .home:
-			return UIImage(systemName: "house.fill")
-		case .search:
-			return UIImage(systemName: "magnifyingglass")
+		case .home: return UIImage(systemName: "house.fill")
+		case .search: return UIImage(systemName: "magnifyingglass")
 		}
 	}
-}
-final class TabBarController: UITabBarController {
 	
-	private let dataSource: [TabBarItem] = [.home, .search]
+	static let allTabBarItems = [home, search]
+}
+
+final class TabBarController: UITabBarController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		buildTabBarComponents()
 		setupTabBar()
 	}
 }
 
 //MARK: - Settings View
 private extension TabBarController {
-	func buildTabBarComponents() {
-		viewControllers = dataSource.map {
-			switch $0 {
-			case .home:
-				let viewController = ViewController()
-				viewController.bookStoreManager = buildBookStoreManager()
-				return UINavigationController(rootViewController: viewController)
-			case .search:
-				return UINavigationController(rootViewController: MultipleSectionsViewController())
-			}
-		}
-	}
-	
 	func setupTabBar() {
 		let appearance = UITabBarAppearance()
 		appearance.configureWithOpaqueBackground()
@@ -68,19 +51,36 @@ private extension TabBarController {
 		tabBar.standardAppearance = appearance
 		tabBar.scrollEdgeAppearance = appearance
 		
-		viewControllers?.enumerated().forEach { index, viewController in
-			viewController.tabBarItem.title = dataSource[index].title
-			viewController.tabBarItem.image = dataSource[index].icon
+		let controllers: [UINavigationController] = TabBarItem.allTabBarItems.map { item in
+			setupNavigationBar(item)
 		}
-	}
-}
 
-extension TabBarController {
-	func buildBookStoreManager() -> IBookStoreDataManager {
-		let bookTypeManager: IBookTypeManager = BookTypeManager()
-		let bookStoreManager = BookStoreDataManager()
-		bookStoreManager.addBookTypes(bookTypeManager.getBookTypes())
+		setViewControllers(controllers, animated: true)
+	}
+	
+	func setupNavigationBar(_ item: TabBarItem) -> UINavigationController {
+		let navController = UINavigationController()
 		
-		return bookStoreManager
+		navController.navigationBar.tintColor = .white
+		
+		let appearance = UINavigationBarAppearance()
+		appearance.configureWithOpaqueBackground()
+		appearance.backgroundColor = .black
+		
+		appearance.titleTextAttributes = [
+			.foregroundColor: UIColor.white
+		]
+		
+		appearance.largeTitleTextAttributes = [
+			.foregroundColor: UIColor.white
+		]
+		
+		navController.navigationBar.standardAppearance = appearance
+		navController.navigationBar.scrollEdgeAppearance = appearance
+		
+		navController.tabBarItem.title = item.title
+		navController.tabBarItem.image = item.icon
+		
+		return navController
 	}
 }

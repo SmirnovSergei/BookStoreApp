@@ -17,6 +17,12 @@ final class MultipleSectionsViewController: UIViewController {
 		setupView()
 		configureCollectionView()
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationItem.title = "Поиск"
+		navigationController?.navigationBar.prefersLargeTitles = false
+	}
 }
 
 private extension MultipleSectionsViewController {
@@ -35,14 +41,6 @@ private extension MultipleSectionsViewController {
 		
 		view.backgroundColor = .black
 		view.addSubview(collectionView)
-		
-		setupNavigationBar()
-	}
-	
-	func setupNavigationBar() {
-		navigationItem.title = "Поиск"
-		navigationController?.navigationBar.prefersLargeTitles = false
-
 	}
 }
 

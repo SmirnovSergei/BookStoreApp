@@ -14,6 +14,7 @@ final class ViewController: UIViewController {
 	}
 	
 	var bookStoreManager: IBookStoreDataManager!
+	
 	private var library: [BookType] = []
 	
 	private let reuseIdentifier = "reuseIdentifier"
@@ -21,18 +22,25 @@ final class ViewController: UIViewController {
 	
 	private var diffableDataSource: UICollectionViewDiffableDataSource<BookType, Book>!
 	
+	init(manager: IBookStoreDataManager) {
+		self.bookStoreManager = manager
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupView()
-		configureCollectionView()
 		library = bookStoreManager.getBookTypes()
-		configureDataSource()
-		applyInitialData()
+		setupView()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		navigationController?.navigationBar.prefersLargeTitles = true
+		navigationItem.title = "Книги для души"
 	}
 }
 
@@ -56,32 +64,13 @@ private extension ViewController {
 			withReuseIdentifier: BadgeView.reuseIdentifier
 		)
 		
-		setupNavigationBar()
-		
 		collectionView.backgroundColor = .black
 		collectionView.delegate = self
 		view.addSubview(collectionView)
-	}
-	
-	func setupNavigationBar() {
-		navigationItem.title = "Книги для души"
-		navigationController?.navigationBar.tintColor = .white
-		navigationController?.navigationBar.prefersLargeTitles = true
 		
-		let appearance = UINavigationBarAppearance()
-		appearance.configureWithOpaqueBackground()
-		appearance.backgroundColor = .black
-		
-		appearance.titleTextAttributes = [
-			.foregroundColor: UIColor.white
-		]
-		
-		appearance.largeTitleTextAttributes = [
-			.foregroundColor: UIColor.white
-		]
-		
-		navigationController?.navigationBar.standardAppearance = appearance
-		navigationController?.navigationBar.scrollEdgeAppearance = appearance
+		configureCollectionView()
+		configureDataSource()
+		applyInitialData()
 	}
 }
 
@@ -208,8 +197,8 @@ extension ViewController {
 //MARK: - CollectionViewDelegate
 extension ViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let detailVC = DetailViewController()
-		detailVC.book = library[indexPath.section].books[indexPath.row]
+		let detailVC = DetailViewController(bookStoreManager: bookStoreManager, bookID: library[indexPath.section].books[indexPath.row].id)
+		
 		navigationController?.pushViewController(detailVC, animated: true)
 	}
 }
